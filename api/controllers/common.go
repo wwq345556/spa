@@ -48,3 +48,13 @@ func (controller *CommonController) CheckValidation(requestData interface{}) {
 		controller.Fail(errors)
 	}
 }
+
+//错误信息验证
+func (controller *CommonController) CheckError(err error, msg string) {
+	if err != nil {
+		if msg == "" {
+			msg = err.Error()
+		}
+		controller.Fail(msg)
+	}
+}

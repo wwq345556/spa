@@ -9,9 +9,9 @@ func init() {
 
     beego.GlobalControllerRouter["spa/api/controllers/user:UserInformationController"] = append(beego.GlobalControllerRouter["spa/api/controllers/user:UserInformationController"],
         beego.ControllerComments{
-            Method: "Get",
-            Router: `get`,
-            AllowHTTPMethods: []string{"get"},
+            Method: "Register",
+            Router: `register`,
+            AllowHTTPMethods: []string{"post"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
