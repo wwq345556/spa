@@ -25,3 +25,10 @@ func Register(params *User) error {
 	_, err := db.Insert(params)
 	return err
 }
+
+func CheckPhone(phone string) (int,error) {
+	var num int
+	db := orm.NewOrm()
+	err := db.Raw(`select count(*) from user where phone = ?`,phone).QueryRow(&num)
+	return num,err
+}
