@@ -14,8 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from flora import views
+from django.urls import include,path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('index',views.hello),
+    path('flora/',include('flora.urls'))
 ]
+# handler400 = views.bad_request
+# handler403 = views.permission_denied
+handler404 = views.page_not_found
+# handler500 = views.page_error

@@ -16,7 +16,7 @@ class Flora(models.Model):
     cursor = conn.cursor()
     cursor.execute(sql)
     data = cursor.fetchall()
-    print(data)
+
     alldata = data + (('0','植物'),)
     cursor.close()
     conn.close()
@@ -30,6 +30,8 @@ class Flora(models.Model):
     update_time = models.IntegerField(u'修改时间',default=int(time.time()),editable=False)
     delete_time = models.IntegerField(u'删除时间', default=0,editable=False)
 
+    # def getPersonDropDownList(self):
+    #     return tuple([(0, '无')] + list(Flora.objects.values_list('id', 'flora_name')))
     def delete(self, using=None, keep_parents=False):
         self.is_del = 1
         self.delete_time = int(time.time())
