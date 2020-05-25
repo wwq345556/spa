@@ -17,17 +17,21 @@ from django.contrib import admin
 from flora import views
 from django.urls import include,path
 import base
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.views.static import serve
+from django.conf.urls import url
+from django.conf import settings
+# from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 # from django.conf.urls import handler404
 # from django.http import Http404
 
 urlpatterns = [
+    url(r'^media/(?P<path>.*)',serve,{"document_root":settings.MEDIA_ROOT}),
     path('admin/', admin.site.urls),
     path('index',views.hello),
     path('flora/',include('flora.urls')),
     path('plants/',include('plants.urls'))
 ]
-urlpatterns += staticfiles_urlpatterns()
+# urlpatterns += staticfiles_urlpatterns()
 # handler400 = views.bad_request
 # handler403 = views.permission_denied
 # handler404 = base.common.page_not_found()
