@@ -17,6 +17,7 @@ from django.contrib import admin
 from flora import views
 from django.urls import include,path
 import base
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 # from django.conf.urls import handler404
 # from django.http import Http404
 
@@ -26,6 +27,7 @@ urlpatterns = [
     path('flora/',include('flora.urls')),
     path('plants/',include('plants.urls'))
 ]
+urlpatterns += staticfiles_urlpatterns()
 # handler400 = views.bad_request
 # handler403 = views.permission_denied
 # handler404 = base.common.page_not_found()

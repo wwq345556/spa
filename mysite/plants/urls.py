@@ -5,5 +5,5 @@ urlpatterns = [
     path('add/',views.plants_add),
     # path('delete/',views.flora_delete),
     # path('update/',views.flora_update),
-    # path('info/',views.flora_info)
+    path('info/',views.plants_info)
 ]
