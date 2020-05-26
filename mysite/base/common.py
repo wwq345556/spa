@@ -46,5 +46,16 @@ def success(data=None):
 def error(message='', data=None):
     return result(code=HttpCode.error, message=message, data=data)
 
+def paging(page,limit,total):
+    pn = max(1,page)
+    limit = max(1,limit);
+    offset = max(pn - 1, 0) * limit;
+    data = {}
+    data['pn'] = pn
+    data['total'] = total
+    data['offset'] = offset
+    data['size'] = min(total - offset,limit)
+    return data
+
 
 
